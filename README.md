@@ -23,7 +23,11 @@ npm install
 This command runs a Postgres database in a Docker container and mounts a Docker volume (`pgdata`) to persist your database data, so it is not lost when the container stops or is removed.
 
 ```sh
-docker run --name local-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -v pgdata:/var/lib/postgresql/data -d postgres
+docker run --name local-postgres \
+  -e POSTGRES_PASSWORD=mysecretpassword \
+  -p 5432:5432 \
+  -v pgdata:/var/lib/postgresql/data \
+  -d postgres
 ```
 
 ### 3. Start Hasura in Docker 🐳

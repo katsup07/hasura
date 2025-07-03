@@ -38,7 +38,7 @@ docker run -d --name hasura \
 ```
 
 
--### 4. Set up the database and Hasura 🗄️
+### 4. Set up the database and Hasura 🗄️
 - Open the Hasura console at http://localhost:8080
 - Go to the "Data" tab and create a `users` table with columns: `id` (serial/auto-increment), `name` (text), `email` (text)
 - Insert some sample users

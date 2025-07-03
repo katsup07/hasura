@@ -20,7 +20,7 @@ function Users() {
 export default function App() {
   return (
     <ApolloProvider client={client}>
-      <h1>React + Apollo Client + Hasura Example</h1>
+      <h1>Apollo Client + Hasura Example</h1>
       <Users />
     </ApolloProvider>
   );

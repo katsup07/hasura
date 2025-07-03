@@ -41,7 +41,7 @@ docker run -d --name hasura \
 ### 4. Set up the database and Hasura 🗄️
 - Open the Hasura console at http://localhost:8080
 - Go to the "Data" tab and create a `users` table with columns: `id` (serial/auto-increment), `name` (text), `email` (text)
-- Insert some sample users
+- Insert some sample users via insert row.
 
 ### 5. Generate GraphQL types and hooks 🛠️
 ```sh
@@ -53,17 +53,6 @@ npm run codegen
 npm run dev
 ```
 
-The app will fetch and display the users from the database on page load.
-
----
-
-## ⚡ Notes for Vite Migration
-
-- The app now uses [Vite](https://vitejs.dev/) for development and build instead of Create React App.
-- Use `npm run dev` to start the development server (default: http://localhost:3000).
-- The entry point is `/src/index.tsx` and the main HTML file is `/index.html` in the project root.
-- Environment variables must be prefixed with `VITE_` to be exposed to the client (e.g., `VITE_GRAPHQL_ENDPOINT`).
-- For production builds, use `npm run build` and preview with `npm run preview`.
 The app will fetch and display the users from the database on page load.
 
 ---

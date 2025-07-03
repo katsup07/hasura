@@ -9,13 +9,12 @@ This project is a simple React app that uses Apollo Client to fetch and display 
 - Uses GraphQL Code Generator for type-safe React hooks
 
 ## 🚀 Setup Instructions
-
 ### 1. Install dependencies 📦
 ```sh
 cd client
 npm install
 ```
-
+```
 
 
 ### 2. Start Postgres in Docker 🐳
@@ -23,7 +22,8 @@ This command runs a Postgres database in a Docker container and mounts a Docker 
 ```sh
 docker run --name local-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -v pgdata:/var/lib/postgresql/data -d postgres
 ```
-
+docker run --name local-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -v pgdata:/var/lib/postgresql/data -d postgres
+```
 ### 3. Start Hasura in Docker 🐳
 This command runs Hasura in a Docker container, exposing the Hasura console on port 8080. Hasura connects to the Postgres database using the connection string provided.
 ```sh
@@ -33,6 +33,8 @@ docker run -d --name hasura \
   -e HASURA_GRAPHQL_ENABLE_CONSOLE=true \
   hasura/graphql-engine:latest
 ```
+```
+
 
 ### 4. Set up the database and Hasura 🗄️
 - Open the Hasura console at http://localhost:8080
@@ -41,17 +43,30 @@ docker run -d --name hasura \
 - Make sure the `users` table is tracked
 
 ### 5. Generate GraphQL types and hooks 🛠️
+### 5. Generate GraphQL types and hooks 🛠️
 ```sh
 cd client
 npm run codegen
 ```
+### 6. Start the React app ⚛️
+```sh
 
 ### 6. Start the React app ⚛️
 ```sh
-npm start
+npm run dev
 ```
 
+The app will fetch and display the users from the database on page load.
 
+---
+
+## ⚡ Notes for Vite Migration
+
+- The app now uses [Vite](https://vitejs.dev/) for development and build instead of Create React App.
+- Use `npm run dev` to start the development server (default: http://localhost:3000).
+- The entry point is `/src/index.tsx` and the main HTML file is `/index.html` in the project root.
+- Environment variables must be prefixed with `VITE_` to be exposed to the client (e.g., `VITE_GRAPHQL_ENDPOINT`).
+- For production builds, use `npm run build` and preview with `npm run preview`.
 The app will fetch and display the users from the database on page load.
 
 ---

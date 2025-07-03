@@ -45,7 +45,6 @@ docker run -d --name hasura \
 - Make sure the `users` table is tracked
 
 ### 5. Generate GraphQL types and hooks 🛠️
-### 5. Generate GraphQL types and hooks 🛠️
 ```sh
 cd client
 npm run codegen

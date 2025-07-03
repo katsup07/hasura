@@ -9,23 +9,26 @@ This project is a simple React app that uses Apollo Client to fetch and display 
 - Uses GraphQL Code Generator for type-safe React hooks
 
 ## 🚀 Setup Instructions
+
 ### 1. Install dependencies 📦
+
 ```sh
 cd client
 npm install
 ```
-```
+
 
 
 ### 2. Start Postgres in Docker 🐳
 This command runs a Postgres database in a Docker container and mounts a Docker volume (`pgdata`) to persist your database data, so it is not lost when the container stops or is removed.
+
 ```sh
 docker run --name local-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -v pgdata:/var/lib/postgresql/data -d postgres
 ```
-docker run --name local-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -v pgdata:/var/lib/postgresql/data -d postgres
-```
+
 ### 3. Start Hasura in Docker 🐳
 This command runs Hasura in a Docker container, exposing the Hasura console on port 8080. Hasura connects to the Postgres database using the connection string provided.
+
 ```sh
 docker run -d --name hasura \
   -p 8080:8080 \
@@ -33,10 +36,9 @@ docker run -d --name hasura \
   -e HASURA_GRAPHQL_ENABLE_CONSOLE=true \
   hasura/graphql-engine:latest
 ```
-```
 
 
-### 4. Set up the database and Hasura 🗄️
+-### 4. Set up the database and Hasura 🗄️
 - Open the Hasura console at http://localhost:8080
 - Go to the "Data" tab and create a `users` table with columns: `id` (serial/auto-increment), `name` (text), `email` (text)
 - Insert some sample users

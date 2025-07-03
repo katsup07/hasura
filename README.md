@@ -4,9 +4,9 @@
 This project is a simple React app that uses Apollo Client to fetch and display user data from a Postgres database via Hasura's auto-generated GraphQL API. No custom backend server is required—Hasura provides the GraphQL API directly from your database.
 
 ## ✨ Features
-- 📋 Fetches and displays a list of users (id, name, email) from a Postgres database
-- ⚡ Uses Hasura for instant GraphQL API generation
-- 🛡️ Uses GraphQL Code Generator for type-safe React hooks
+- Fetches and displays a list of users (id, name, email) from a Postgres database
+- Uses Hasura for instant GraphQL API generation
+- Uses GraphQL Code Generator for type-safe React hooks
 
 ## 🚀 Setup Instructions
 

@@ -1,5 +1,5 @@
 
-# React + Apollo Client + Hasura Example
+# Apollo Client + Hasura Example
 
 This project is a simple React app that uses Apollo Client to fetch and display user data from a Postgres database via Hasura's auto-generated GraphQL API. No custom backend server is required—Hasura provides the GraphQL API directly from your database.
 

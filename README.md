@@ -3,27 +3,28 @@
 
 This project is a simple React app that uses Apollo Client to fetch and display user data from a Postgres database via Hasura's auto-generated GraphQL API. No custom backend server is required—Hasura provides the GraphQL API directly from your database.
 
-## Features
-- Fetches and displays a list of users (id, name, email) from a Postgres database
-- Uses Hasura for instant GraphQL API generation
-- Uses GraphQL Code Generator for type-safe React hooks
+## ✨ Features
+- 📋 Fetches and displays a list of users (id, name, email) from a Postgres database
+- ⚡ Uses Hasura for instant GraphQL API generation
+- 🛡️ Uses GraphQL Code Generator for type-safe React hooks
 
-## Setup Instructions
+## 🚀 Setup Instructions
 
-### 1. Install dependencies
+### 1. Install dependencies 📦
 ```sh
 cd client
 npm install
 ```
 
 
-### 2. Start Postgres in Docker
+
+### 2. Start Postgres in Docker 🐳
 This command runs a Postgres database in a Docker container and mounts a Docker volume (`pgdata`) to persist your database data, so it is not lost when the container stops or is removed.
 ```sh
 docker run --name local-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -v pgdata:/var/lib/postgresql/data -d postgres
 ```
 
-### 3. Start Hasura in Docker
+### 3. Start Hasura in Docker 🐳
 This command runs Hasura in a Docker container, exposing the Hasura console on port 8080. Hasura connects to the Postgres database using the connection string provided.
 ```sh
 docker run -d --name hasura \
@@ -33,19 +34,19 @@ docker run -d --name hasura \
   hasura/graphql-engine:latest
 ```
 
-### 4. Set up the database and Hasura
+### 4. Set up the database and Hasura 🗄️
 - Open the Hasura console at http://localhost:8080
 - Go to the "Data" tab and create a `users` table with columns: `id` (serial/auto-increment), `name` (text), `email` (text)
 - Insert some sample users
 - Make sure the `users` table is tracked
 
-### 5. Generate GraphQL types and hooks
+### 5. Generate GraphQL types and hooks 🛠️
 ```sh
 cd client
 npm run codegen
 ```
 
-### 6. Start the React app
+### 6. Start the React app ⚛️
 ```sh
 npm start
 ```
@@ -55,7 +56,7 @@ The app will fetch and display the users from the database on page load.
 
 ---
 
-## About Hasura
+## ℹ️ About Hasura
 
 **Hasura** provides an instant, real-time GraphQL API on top of your Postgres database. This means you can:
 - Instantly query and mutate your data with GraphQL, without writing backend code

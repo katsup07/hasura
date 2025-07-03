@@ -42,16 +42,12 @@ docker run -d --name hasura \
 - Open the Hasura console at http://localhost:8080
 - Go to the "Data" tab and create a `users` table with columns: `id` (serial/auto-increment), `name` (text), `email` (text)
 - Insert some sample users
-- Make sure the `users` table is tracked
 
 ### 5. Generate GraphQL types and hooks 🛠️
 ```sh
 cd client
 npm run codegen
 ```
-### 6. Start the React app ⚛️
-```sh
-
 ### 6. Start the React app ⚛️
 ```sh
 npm run dev

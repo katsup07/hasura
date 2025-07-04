@@ -82,3 +82,84 @@ The app will fetch and display the users from the database on page load.
 - Fine-grained access control and permissions
 - Easily connect to existing or new Postgres databases
 - Scalable and production-ready
+
+---
+
+# 🇯🇵 日本語版 README
+
+このプロジェクトは、Apollo Client を使って Hasura の自動生成 GraphQL API から Postgres データベースのユーザーデータを取得・表示するシンプルな React アプリです。バックエンドサーバーは不要で、Hasura が直接 GraphQL API を提供します。
+
+## ✨ 主な特徴
+- Postgres データベースからユーザー一覧（id, name, email）を取得・表示
+- Hasura による即時 GraphQL API 生成
+- GraphQL Code Generator による型安全な React フック
+
+## 🚀 セットアップ手順
+
+### 1. 依存パッケージのインストール 📦
+```sh
+cd client
+npm install
+```
+
+### 2. Docker で Postgres を起動 🐳
+このコマンドは Docker コンテナで Postgres データベースを起動し、データ永続化のために Docker ボリューム（pgdata）をマウントします。
+```sh
+docker run --name local-postgres \
+  -e POSTGRES_PASSWORD=mysecretpassword \
+  -p 5432:5432 \
+  -v pgdata:/var/lib/postgresql/data \
+  -d postgres
+```
+
+### 3. Docker で Hasura を起動 🐳
+このコマンドは Hasura を Docker コンテナで起動し、ポート 8080 で Hasura コンソールを公開します。Hasura は指定した接続文字列で Postgres に接続します。
+```sh
+docker run -d --name hasura \
+  -p 8080:8080 \
+  -e HASURA_GRAPHQL_DATABASE_URL=postgres://postgres:mysecretpassword@host.docker.internal:5432/postgres \
+  -e HASURA_GRAPHQL_ENABLE_CONSOLE=true \
+  hasura/graphql-engine:latest
+```
+
+### 4. データベースと Hasura のセットアップ 🗄️
+- http://localhost:8080 で Hasura コンソールを開く
+- 「Data」タブで `users` テーブルを作成（カラム: `id` (serial/auto-increment), `name` (text), `email` (text)）
+- サンプルユーザーを追加
+
+### 5. GraphQL 型とフックの生成 🛠️
+```sh
+cd client
+npm run codegen
+```
+
+### 6. React アプリの起動 ⚛️
+```sh
+npm run dev
+```
+
+アプリはページ読み込み時にデータベースからユーザーを取得・表示します。
+
+---
+
+## ℹ️ Hasura について
+
+**Hasura** は Postgres データベース上に即時・リアルタイムな GraphQL API を提供します。これにより：
+- バックエンドコードなしで GraphQL でデータのクエリ・更新が可能
+- 権限・リレーション・サブスクリプションの設定が簡単
+- Hasura コンソール（http://localhost:8080）でスキーマ管理やデータ編集が可能
+
+**注意:** 本番環境では Prisma や Hasura マイグレーション、SQL スクリプト等でスキーマ管理・バージョン管理を行うのが一般的です。このデモでは素早いセットアップのためコンソールから直接テーブルやデータを作成できます。
+
+---
+
+**Hasura コンソールへのアクセス:**
+- ブラウザで [http://localhost:8080](http://localhost:8080) を開く
+- 「Data」タブでテーブル作成やデータ挿入が可能
+
+**Hasura のメリット:**
+- バックエンド/API 開発が高速・ノーボイラープレート
+- リアルタイム GraphQL サブスクリプション
+- きめ細やかなアクセス制御
+- 既存・新規 Postgres DB への簡単接続
+- スケーラブルで本番運用も可能
